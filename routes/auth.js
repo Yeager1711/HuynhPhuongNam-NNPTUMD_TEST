@@ -76,8 +76,8 @@ router.post("/forgotPassword", async function (req, res, next) {
     await user.save()
     try {
       let url = `https://${config.hostName}/api/v1/auth/ResetPassword/${token}`;
-      let message = `click zo url de reset passs: ${url}`
-      sendmail(message, user.email)
+      let message = `Click vào đây để reset password: `
+      sendmail(message, user.email, url)
       ResHelper.RenderRes(res, true, "Thanh cong");
     } catch (error) {
       user.resetPasswordToken = undefined;
